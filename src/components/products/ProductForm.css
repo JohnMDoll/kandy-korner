@@ -1,0 +1,12 @@
+header{
+    font-size: 22px;
+}
+.location{
+    background-color: rgba(119, 203, 203, 0.415);
+    border: .5px solid rgba(51, 88, 88, 0.415);
+    margin: 10px;
+}
+body{
+    background-color: rgb(161, 50, 50);
+}
+
