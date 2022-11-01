@@ -33,7 +33,7 @@ export const Register = (props) => {
 
     const handleRegister = (e) => {
         e.preventDefault()
-        return fetch(`http://localhost:8088/users?email=${user.email}`)
+        return fetch(`http://localhost:8088/users?email=${user.email.toLowerCase()}`)
             .then(res => res.json())
             .then(response => {
                 if (response.length > 0) {
@@ -50,6 +50,7 @@ export const Register = (props) => {
     const updateUser = (evt) => {
         const copy = {...user}
         copy[evt.target.id] = evt.target.value
+        copy.email = copy.email.toLowerCase()
         setUser(copy)
     }
 

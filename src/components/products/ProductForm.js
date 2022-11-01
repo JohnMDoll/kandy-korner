@@ -78,7 +78,7 @@ export const ProductForm = () => {
                     <ol>
                         {productTypes.map(type => <li key={type.id}>
                             <input type="radio"
-                                name={type.typeName}
+                                name="productType" //change to static name, dummy
                                 value={type.id}
                                 onChange={
                                     (evt) => {
