@@ -15,19 +15,11 @@ export const ProductForm = () => {
         event.preventDefault()
 
         // TODO: Create the object to be saved to the API
-        // {
-        //     "userId": 3,
-        //     "description": "Vero est adipisci sed natus quasi consectetur occaecati. Modi maxime sunt officia cumque. Vel at culpa. Sint accusamus deserunt dolorem qui.",
-        //     "emergency": true,
-        //     "dateCompleted": ""
-        //   }
         const productToSendToAPI = {
             name: newProduct.name,
             productTypeId: newProduct.productTypeId,
             pricePerUnit: newProduct.pricePerUnit,
         }
-
-
         // TODO: Perform the fetch() to POST the object to the API
         return fetch(`http://localhost:8088/products`, {
             method: "POST",
@@ -40,7 +32,6 @@ export const ProductForm = () => {
             .then(() => {
                 navigate("/products")
             })
-
     }
 
     useEffect(

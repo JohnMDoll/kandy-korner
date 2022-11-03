@@ -11,7 +11,7 @@ export const NavBar = () => {
             <ul className="welcome">Ye Olde Kandy Shoppe</ul>
             <li className="navbar__item navbar__locations">
                 <Link className="navbar__link" to="locations" onClick={() => {
-                    navigate("locations", { replace: true })
+                    navigate("locations", { replace: false })
                 }}>Locations</Link>
             </li>
             <>
@@ -21,15 +21,20 @@ export const NavBar = () => {
                         <>
                             <li className="navbar__item navbar__products">
                                 <Link className="navbar__link" to="products" onClick={() => {
-                                    navigate("products", { replace: true })
+                                    navigate("products", { replace: false })
                                 }}>Products</Link>
+                            </li>
+                            <li className="navbar__item navbar__products">
+                                <Link className="navbar__link" to="employees" onClick={() => {
+                                    navigate("employees", { replace: false })
+                                }}>Employee</Link>
                             </li>
                         </>
                         :
                         <>
                         <li className="navbar__item navbar__findproducts">
                                 <Link className="navbar__link" to="products/productsearch" onClick={() => {
-                                    navigate("products/productsearch", { replace: true })
+                                    navigate("products/productsearch", { replace: false })
                                 }}>Find Candy</Link>
                             </li>
                         </>

@@ -56,7 +56,7 @@ export const Products = () => {
                     <button onClick={() => { updateHighOnly(true) }}>Top Priced</button>
                     <button onClick={() => { updateHighOnly(false) }}>Show All</button>
                     <button className="productForm__link" to="createProduct" onClick={() => {
-                    navigate("createProduct", {replace: true})
+                    navigate("createProduct", {replace: false})
                 }}>Create Product</button>
                 </>
                 :
