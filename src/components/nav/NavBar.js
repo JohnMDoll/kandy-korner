@@ -28,6 +28,10 @@ export const NavBar = () => {
                                 <Link className="navbar__link" to="employees" onClick={() => {
                                     navigate("employees", { replace: false })
                                 }}>Employee</Link>
+                            </li> <li className="navbar__item navbar__products">
+                                <Link className="navbar__link" to="customers" onClick={() => {
+                                    navigate("customers", { replace: false })
+                                }}>Customers</Link>
                             </li>
                         </>
                         :

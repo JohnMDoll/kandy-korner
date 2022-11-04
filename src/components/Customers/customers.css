@@ -1,0 +1,24 @@
+.customerListItem:nth-child(n){
+    border:  10px dotted white;
+    background-color: rgb(203, 53, 53);
+    margin: 20px;
+    padding-left: 50px;
+}
+.customerListItem:nth-child(2n){
+    border:  10px dotted rgb(254, 250, 1);
+    background-color: rgb(169, 48, 74);
+    margin: 20px;
+    padding-left: 50px;
+}
+.customer:nth-child(n){
+    border:  10px dotted white;
+    background-color: rgb(203, 53, 53);
+    margin: 20px;
+    padding-left: 50px;
+}
+.customer:nth-child(2n){
+    border:  10px dotted rgb(254, 250, 1);
+    background-color: rgb(169, 48, 74);
+    margin: 20px;
+    padding-left: 50px;
+}
