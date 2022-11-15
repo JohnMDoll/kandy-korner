@@ -10,14 +10,11 @@ export const ProductSearch = () => {
     const navigate = useNavigate()
     const localUser = localStorage.getItem("kandy_user")
     const kandyUserObject = JSON.parse(localUser)
-
-    // useEffect(
-    //     () => {
-    //             setSearchTerm()
-    //     },
-    //     []
-    // )
-    useEffect(
+    const [newPurchase, setPurchase] = useState(
+        {userId: kandyUserObject.id, productId: 0}
+        )
+    
+        useEffect(
         () => {
             fetch(`http://localhost:8088/products`)
                 .then(res => res.json())
@@ -33,6 +30,23 @@ export const ProductSearch = () => {
         },
         [searchTerm]
     )
+
+    const handleSaveButtonClick = (event) => {
+        event.preventDefault()
+
+        newPurchase.productId = parseInt(event.target.value)
+
+        // TODO: Perform the fetch() to POST the object to the API
+        return fetch(`http://localhost:8088/purchases`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newPurchase)
+        })
+           
+    }
+
     return <>
         <h2>What candy are you looking for?</h2>
         {/* {
@@ -66,11 +80,17 @@ export const ProductSearch = () => {
             {
                 filteredProd.map(
                     (product) => {
-                        return <section className="product" key={`product--${product.id}`}>
+                        return <article className="productContainer" key={`product--${product.id}`}>
+                            <section className="product">
                             <header>{product.name}</header>
                             <div>(somebody should probably put a picture here or something)</div>
                             <footer>${product.pricePerUnit} each</footer>
-                        </section>
+                            </section>
+                            <section className="buttonHolder">
+                                <button value={product.id} onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}>Purchase</button>
+                            </section>
+                        </article>
+
                     }
                 )
             }

@@ -32,8 +32,8 @@ export const CustomerDetails = () => {
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
         /*
-            TODO: Perform the PUT fetch() call here to update the profile.
-            Navigate user to home page when done.
+            the feedback function lacks css to make it visible but currently serves as a trigger
+            to update the DOM loyalty number to the newly set number
         */
         return fetch(`http://localhost:8088/customers/${newCustomer.id}`, {
             method: "PUT",

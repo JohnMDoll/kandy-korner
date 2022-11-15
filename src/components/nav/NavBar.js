@@ -41,6 +41,11 @@ export const NavBar = () => {
                                     navigate("products/productsearch", { replace: false })
                                 }}>Find Candy</Link>
                             </li>
+                        <li className="navbar__item navbar__purchases">
+                            <Link className="navbar__link" to={`products/myorders/${kandyUserObject.id}`} onClick={() => {
+                                navigate("products/myorders", { replace: false })
+                            }}>My Orders</Link>
+                        </li>
                         </>
                 }
             </>

@@ -9,4 +9,17 @@ header{
 body{
     background-color: rgb(161, 50, 50);
 }
-
+.productContainer{
+    display: flex;
+    justify-content: space-around;
+    border: 10px dotted rgb(255, 247, 0);
+    margin: 7px;
+    padding-inline: 5px;
+}
+.buttonHolder{
+    padding-left: 5px;
+    align-self: center;
+}
+.productContainer:nth-child(2n){
+    border: 10px dotted rgb(12, 12, 172);
+}
