@@ -10,3 +10,14 @@
     margin: 20px;
     padding-left: 50px;
 }
+
+.employeeListItem{
+    display: flex;
+    justify-content: space-between;
+}
+
+.fire__button{
+    display: flex;
+    height: fit-content;
+    align-self: center;
+}
