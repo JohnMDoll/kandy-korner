@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { GetAUser, SaveLoyalty } from "../dataAccess/DataAccess.js"
 import "./customers.css"
 
 export const CustomerDetails = () => {
     const { userId } = useParams()
-    const [customer, setCustomer] = useState()
+    const [customer, setCustomer] = useState({})
     const [newCustomer, setNewLoyalty] = useState(
         {id: "", loyaltyNumber: "", userId: ""}
     )
@@ -19,33 +20,19 @@ export const CustomerDetails = () => {
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/customers?_expand=user&userId=${userId}`)
-                .then(res => res.json())
-                .then((data) => {
-                    const singleCustomer = data[0]
-                    setCustomer(singleCustomer)
-                })
+            let aCustomer = GetAUser(userId, setCustomer)
+            setCustomer(aCustomer[0])
         },
         [userId, feedback]
     )
-
+// between the above UE and the below function, tried different methods of setter function execution. OK?
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
         /*
             the feedback function lacks css to make it visible but currently serves as a trigger
             to update the DOM loyalty number to the newly set number
         */
-        return fetch(`http://localhost:8088/customers/${newCustomer.id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newCustomer)
-        })
-            .then(res => res.json())
-            .then(() => {
-                setFeedback("Loyalty Number Updated!")
-            })
+        SaveLoyalty(newCustomer, setFeedback)
     }
 
     return <> <h2>Customer Detail View</h2>
@@ -65,7 +52,7 @@ export const CustomerDetails = () => {
                             }
                         } />
             <button
-                onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
+                onClick={handleSaveButtonClick}
                 className="updateLoyalty">
                 Update
             </button>

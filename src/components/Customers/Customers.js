@@ -29,6 +29,9 @@ export const Customers = () => {
                         <div>
                             <h3><Link to={`/customers/${customer?.userId}`}>{customer?.user?.fullName}</Link></h3>
                         </div>
+                        <div>
+
+                        </div>
                         <h5>{customer?.user?.email}</h5>
                     </div>
                 }

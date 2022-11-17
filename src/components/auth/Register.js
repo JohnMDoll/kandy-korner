@@ -1,50 +1,20 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { DuplicateEmailCheck, RegisterNewUser } from "../dataAccess/DataAccess"
 import "./Login.css"
 
 export const Register = (props) => {
+    const navigate = useNavigate()
     const [user, setUser] = useState({
         email: "",
         fullName: "",
         isStaff: false
     })
-    let navigate = useNavigate()
-
-    const registerNewUser = () => {
-        return fetch("http://localhost:8088/users", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(user)
-        })
-            .then(res => res.json())
-            .then(createdUser => {
-                if (createdUser.hasOwnProperty("id")) {
-                    localStorage.setItem("kandy_user", JSON.stringify({
-                        id: createdUser.id,
-                        staff: createdUser.isStaff
-                    }))
-
-                    navigate("/")
-                }
-            })
-    }
 
     const handleRegister = (e) => {
         e.preventDefault()
-        return fetch(`http://localhost:8088/users?email=${user.email.toLowerCase()}`)
-            .then(res => res.json())
-            .then(response => {
-                if (response.length > 0) {
-                    // Duplicate email. No good.
-                    window.alert("Account with that email address already exists")
-                }
-                else {
-                    // Good email, create user.
-                    registerNewUser()
-                }
-            })
+        DuplicateEmailCheck(user)
+        .then(() => {return navigate("/login")})
     }
 
     const updateUser = (evt) => {
